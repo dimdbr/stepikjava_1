@@ -3,8 +3,10 @@ import static java.lang.System.*;
 public class Main {
 
     public static void main(String[] args) {
-        Robot r1 = new Robot(0, 0, Direction.UP);
-
+        Robot r1 = new Robot(4, 8, Direction.UP);
+        moveRobot(r1,-3,1);
+        System.out.println(r1.getX());
+        System.out.println(r1.getY());
     }
     public enum Direction {
         UP,
@@ -54,11 +56,14 @@ public class Main {
     public static void moveRobot(Robot robot, int toX, int toY) {
         int x_new=toX-robot.getX();
         int y_new=toY-robot.getY();
+
         Direction dir = robot.getDirection();
+
         if(x_new>0)
         {
             while(dir!=Direction.RIGHT)
             {robot.turnLeft();
+                dir = robot.getDirection();
             }
             for(int i =0;i<x_new;i++)
             {
@@ -66,10 +71,12 @@ public class Main {
             }
 
         }
+
         if(x_new<0)
         {
             while(dir!=Direction.LEFT)
             { robot.turnLeft();
+                dir = robot.getDirection();
             }
             for(int i =0;i<Math.abs(x_new);i++)
             {
@@ -77,10 +84,12 @@ public class Main {
             }
 
         }
+
         if(y_new>0)
         {
             while(dir!=Direction.UP)
             {robot.turnLeft();
+                dir = robot.getDirection();
             }
             for(int i =0;i<y_new;i++)
             {
@@ -92,6 +101,7 @@ public class Main {
         {
             while(dir!=Direction.DOWN)
             {robot.turnLeft();
+                dir = robot.getDirection();
             }
             for(int i =0;i<Math.abs(y_new);i++)
             {
